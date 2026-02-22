@@ -1,17 +1,19 @@
-name: Build and Test
+name: Build, Test, and Deploy
 
 on:
   push:
     branches:
-      - '**'
+      - main  # Adjust this if your primary branch is named differently
   pull_request:
     branches:
-      - '**'
+      - main
+
+permissions:
+  contents: write
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,3 +31,13 @@ jobs:
 
       - name: Run tests
         run: npx tsx src/test.ts
+
+      - name: Build for Web
+        run: npx vite build --base=./
+
+      - name: Deploy to GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # The folder the action should deploy.
+          branch: gh-pages # The branch the action should deploy to.
