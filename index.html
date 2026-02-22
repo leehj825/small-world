@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Prehistoric World Simulation</title>
+    <style>
+        body { margin: 0; overflow: hidden; font-family: sans-serif; }
+        #ui-layer {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+            pointer-events: none;
+            max-width: 300px;
+            z-index: 10;
+        }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <div id="ui-layer">
+        <h3>Tribe Chronicle</h3>
+        <div id="chronicle-log">Log initialized...</div>
+        <hr>
+        <h3>Agent Status</h3>
+        <div id="agent-status">Loading...</div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
