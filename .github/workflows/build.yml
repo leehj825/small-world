@@ -28,4 +28,4 @@ jobs:
         run: npx tsc
 
       - name: Run tests
-        run: node dist/test.js
+        run: npx tsx src/test.ts

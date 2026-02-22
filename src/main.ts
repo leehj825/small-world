@@ -16,22 +16,21 @@ renderer.initEntities([agent], world.animals);
 
 // UI Elements
 const logElement = document.getElementById('chronicle-log');
-const statusElement = document.getElementById('agent-status');
+const hungerElement = document.getElementById('status-hunger');
+const energyElement = document.getElementById('status-energy');
+const socialElement = document.getElementById('status-social');
 
 let tickCount = 0;
 
 function updateUI() {
-    if (statusElement) {
-        statusElement.innerHTML = `
-            <strong>Hunger:</strong> ${agent.needs.hunger.toFixed(1)}<br>
-            <strong>Energy:</strong> ${agent.needs.energy.toFixed(1)}<br>
-            <strong>Social:</strong> ${agent.needs.social.toFixed(1)}
-        `;
-    }
+    if (hungerElement) hungerElement.textContent = agent.needs.hunger.toFixed(1);
+    if (energyElement) energyElement.textContent = agent.needs.energy.toFixed(1);
+    if (socialElement) socialElement.textContent = agent.needs.social.toFixed(1);
+
     if (logElement) {
         // Simple log update for now
         if (tickCount === 1) {
-            logElement.innerHTML = `Tick 1: Simulation started.<br>`;
+            logElement.textContent = `Tick 1: Simulation started.`;
         }
     }
 }
