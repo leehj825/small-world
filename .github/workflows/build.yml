@@ -3,7 +3,7 @@ name: Build, Test, and Deploy
 on:
   push:
     branches:
-      - main  # Adjust this if your primary branch is named differently
+      - *
   pull_request:
     branches:
       - main
